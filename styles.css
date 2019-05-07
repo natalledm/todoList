@@ -71,6 +71,10 @@ input[type=text]:focus{
     cursor: pointer;
 }
 
+.filtered {
+    display: none !important;
+}
+
 /* Add bar */
 
 .add {

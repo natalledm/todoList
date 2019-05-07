@@ -1,10 +1,7 @@
-// Display Todos
-// Add Todos
-// Delete Specific Todos
-// Is pushed to a git repo so that we can download it
-
 const addItem = document.querySelector('.add');
 const ulList = document.querySelector('.todos');
+const search = document.querySelector('.search-bar');
+
 
 const generateItemList = todo => {
     const htmlItem = `
@@ -33,4 +30,21 @@ ulList.addEventListener('click', e =>{
     if(e.target.classList.contains('delete')) {
         e.target.parentElement.remove();
     }
+});
+
+// Filtering the itens
+
+const filterItens = preview => {
+    Array.from(ulList.children)
+        .filter(todoItem => !todoItem.textContent.includes(preview)) // returning only the false(the ones that doesn't contain the input), to put style on those.
+        .forEach(todoItem => todoItem.classList.add('filtered'));
+
+    Array.from(ulList.children)
+        .filter(todoItem => todoItem.textContent.includes(preview))
+        .forEach(todoItem => todoItem.classList.remove('filtered'));
+    };
+
+search.addEventListener('keyup', () => {
+    const preview = search.value.trim();
+    filterItens(preview);
 });
