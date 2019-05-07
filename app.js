@@ -26,3 +26,11 @@ addItem.addEventListener('submit', e =>{
         addItem.reset(); // reset the input field
     }
 })
+
+// To delete the itens
+
+ulList.addEventListener('click', e =>{
+    if(e.target.classList.contains('delete')) {
+        e.target.parentElement.remove();
+    }
+});
