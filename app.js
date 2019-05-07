@@ -36,15 +36,15 @@ ulList.addEventListener('click', e =>{
 
 const filterItens = preview => {
     Array.from(ulList.children)
-        .filter(todoItem => !todoItem.textContent.includes(preview)) // returning only the false(the ones that doesn't contain the input), to put style on those.
+        .filter(todoItem => !todoItem.textContent.toLowerCase().includes(preview)) // returning only the false(the ones that doesn't contain the input), to put style on those.
         .forEach(todoItem => todoItem.classList.add('filtered'));
 
     Array.from(ulList.children)
-        .filter(todoItem => todoItem.textContent.includes(preview))
+        .filter(todoItem => todoItem.textContent.toLowerCase().includes(preview))
         .forEach(todoItem => todoItem.classList.remove('filtered'));
     };
 
 search.addEventListener('keyup', () => {
-    const preview = search.value.trim();
+    const preview = search.value.trim().toLowerCase();
     filterItens(preview);
 });
